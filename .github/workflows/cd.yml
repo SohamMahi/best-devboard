@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs_on: self-hosted
+    runs-on: self-hosted
     steps:
       - name: Code checkout
         uses: actions/checkout@v6
