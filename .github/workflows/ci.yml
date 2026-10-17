@@ -1,5 +1,5 @@
 name: CI
-
+# This is the Workflow for both Frontend and Backend
 on:
   push:
     branch: [advanced]
@@ -34,12 +34,12 @@ jobs:
         name: Login to Docker Hub
         uses: docker/login-action@v4
         with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{vars.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
       -
         name: Build and push
         uses: docker/build-push-action@v7
         with:
           context: ./frontend/Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/docker-frontend-img:latest
+          tags: ${{vars.DOCKERHUB_USERNAME}}/docker-frontend-img:latest
