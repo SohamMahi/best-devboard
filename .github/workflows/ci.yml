@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-# FRONTEND
+# FRONTEND App
 
   frontend:
     runs-on: ubuntu-latest
