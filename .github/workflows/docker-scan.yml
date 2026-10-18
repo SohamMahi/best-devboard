@@ -33,7 +33,7 @@ jobs:
             - name: Run Trivy vulnerability scanner
               uses: aquasecurity/trivy-action@v0.36.0
               with:
-                image-ref: docker build -t ${{vars.DOCKERHUB_USERNAME}}/docker-scanned-img-${{matrix.folder}}:latest .
+                image-ref: docker build -t '${{vars.DOCKERHUB_USERNAME}}/docker-scanned-img-${{matrix.folder}}:latest'
                 format: 'table'
                 exit-code: '1'
                 ignore-unfixed: true
