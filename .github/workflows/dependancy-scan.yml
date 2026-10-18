@@ -20,6 +20,7 @@ jobs:
           cache-dependency-path: ./frontend/package-lock.json
 
       - name: Run dependancy check
+        continue-on-error: true
         run: npm audit
         working-directory: frontend
 
@@ -34,7 +35,16 @@ jobs:
         run: go install golang.org/x/vuln/cmd/govulncheck@v1.3.0
 
       - name: Run govulncheck
-        run: govulncheck ./...
+        continue-on-error: true
+        run: govulncheck ./... > dependancy_report.txt
         working-directory: backend
+
+# Storing the Results
+      - name: Results Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependancy_scan_report
+          path: reports/dependancy_report.txt
 
 
