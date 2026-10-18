@@ -42,7 +42,7 @@ jobs:
 # Storing the Results
       - name: Results Artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dependancy_scan_report
           path: reports/dependancy_report.txt
