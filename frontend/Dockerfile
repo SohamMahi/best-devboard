@@ -19,7 +19,6 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Install only the tool required to serve the generated frontend.
 RUN npm install --global vite@8.3.4 --ignore-scripts \
     && npm cache clean --force
 
@@ -31,4 +30,5 @@ USER node
 EXPOSE 4173
 
 ENTRYPOINT ["vite"]
+
 CMD ["preview", "--host", "0.0.0.0", "--port", "4173"]
