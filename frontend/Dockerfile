@@ -1,34 +1,31 @@
-FROM node:22.12-alpine AS build
+# syntax=docker/dockerfile:1.7
+
+FROM node:22-bookworm-slim AS build
 
 WORKDIR /app
 
-ENV NODE_ENV=development
+ENV NODE_ENV=development \
+    NPM_CONFIG_AUDIT=false \
+    NPM_CONFIG_FUND=false
 
 COPY package.json package-lock.json ./
 
-RUN npm ci --legacy-peer-deps --ignore-scripts
+RUN --mount=type=cache,target=/root/.npm npm ci --legacy-peer-deps --ignore-scripts
 
 COPY . .
 
 RUN npm run build
 
 
-FROM node:22.12-alpine AS runtime
+FROM nginx:mainline-alpine AS runtime
 
-WORKDIR /app
+RUN apk upgrade --no-cache
 
-ENV NODE_ENV=production
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN npm install --global vite@8.3.4 --ignore-scripts \
-    && npm cache clean --force
-
-COPY --from=build /app/dist ./dist
-COPY vite.preview.config.js ./vite.config.js
-
-USER node
+USER nginx
 
 EXPOSE 4173
 
-ENTRYPOINT ["vite"]
-
-CMD ["preview", "--host", "0.0.0.0", "--port", "4173"]
+CMD ["nginx", "-g", "daemon off;"]
