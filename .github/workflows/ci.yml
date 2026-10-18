@@ -1,8 +1,7 @@
 name: CI
 # This is the Workflow for both Frontend and Backend
 on:
-  push:
-    branch: [advanced]
+  workflow_dispatch:
 
 jobs:
 
