@@ -35,6 +35,6 @@ jobs:
 
       - name: Run govulncheck
         run: govulncheck ./...
-        working_directory: backend
+        working-directory: backend
 
 
