@@ -6,5 +6,10 @@ on:
 
 jobs:
 
+# Check the Code Quality 
   code-quality:
     uses: ./.github/workflows/code_quality.yml
+
+# Check the Secret Scan
+  secrets-scan:
+    uses: ./.github/workflows/secrets-scanning.yml
