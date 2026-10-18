@@ -1,3 +1,4 @@
+# SonarQube check the whole application and sends the result
 name: SonarQube Scan
 
 on:
