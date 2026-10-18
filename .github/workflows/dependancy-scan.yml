@@ -36,7 +36,7 @@ jobs:
 
       - name: Run govulncheck
         continue-on-error: true
-        run: govulncheck ./... > dependancy_report.txt
+        run: govulncheck ./...
         working-directory: backend
 
 # Storing the Results
