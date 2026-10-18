@@ -64,7 +64,7 @@ jobs:
   build_and_test:
     needs: [frontend,backend]
     runs-on: ubuntu-latest
-    stratergy:
+    strategy:
       matrix:
         folder: ['frontend','backend']
     steps:
