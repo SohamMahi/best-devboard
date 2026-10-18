@@ -4,19 +4,15 @@ FROM golang:1.22-alpine3.20 AS builder
 
 WORKDIR /src
 
-RUN apk add --no-cache ca-certificates=20241121-r1
+RUN apk add --no-cache ca-certificates=20260413-r0
 
 COPY go.mod go.sum ./
 
-RUN --mount=type=cache,target=/go/pkg/mod \
-    --mount=type=cache,target=/root/.cache/go-build \
-    go mod download
+RUN go mod download
 
 COPY . .
 
-RUN --mount=type=cache,target=/go/pkg/mod \
-    --mount=type=cache,target=/root/.cache/go-build \
-    CGO_ENABLED=0 \
+RUN CGO_ENABLED=0 \
     GOOS=linux \
     GOARCH=$(go env GOARCH) \
     go build \
@@ -27,7 +23,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 
 FROM alpine:3.20 AS runtime
 
-RUN apk add --no-cache ca-certificates=20241121-r1 \
+RUN apk add --no-cache ca-certificates=20260413-r0 \
     && addgroup -S -g 10001 app \
     && adduser -S -D -H -u 10001 -G app app
 
@@ -42,5 +38,6 @@ USER 10001:10001
 EXPOSE 8080
 
 ENTRYPOINT ["/usr/local/bin/devboard-backend"]
+
 
 
