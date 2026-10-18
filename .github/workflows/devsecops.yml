@@ -6,6 +6,8 @@ on:
 
 jobs:
 
+# ---------- CI ------------
+
 # Check the Code Quality 
   code-quality:
     uses: ./.github/workflows/code_quality.yml
@@ -32,8 +34,15 @@ jobs:
   test-checks:
     uses: ./.github/workflows/code-test.yml
 
-# Deploy the application post all checks
+# Deploy the build post all checks
   deploy-build:
     uses: ./.github/workflows/code-deploy.yml
     needs: [code-quality,secrets-scan,docker-scan,dependancy-checks,sonar-scan,test-checks]
+    secrets: inherit
+
+# ----------- CD -----------------
+
+  deploy:
+    needs: [deploy-build]
+    uses: ./.github/workflows/cd.yml
     secrets: inherit
