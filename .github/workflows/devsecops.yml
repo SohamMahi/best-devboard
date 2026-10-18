@@ -21,3 +21,4 @@ jobs:
 # Check the Dependancy Scan
   docker-scan:
     uses: ./.github/workflows/docker-scan.yml
+    secrets: inherit
