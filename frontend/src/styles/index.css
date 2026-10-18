@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -29,7 +29,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Subtle grain in dark mode for depth — barely visible, just enough to
+/* Subtle grain in dark mode for depth ΓÇö barely visible, just enough to
    break up the flat #18181b background and feel less digital. */
 .dark body {
   background-color: var(--db-gray-950);
@@ -49,7 +49,7 @@ body {
   background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-/* Hairline borders — true 0.5px without compounding on hi-dpi */
+/* Hairline borders ΓÇö true 0.5px without compounding on hi-dpi */
 @media (min-resolution: 2dppx) {
   .border-ink-100 { border-color: rgba(211,209,199, 0.7); }
   .dark .border-white\/10 { border-color: rgba(255,255,255, 0.08); }
@@ -78,7 +78,7 @@ body {
   .db-btn-ghost     { @apply db-btn bg-transparent text-accent hover:text-accent-hover px-2; }
   .db-btn-danger    { @apply db-btn bg-danger-bg text-[#A32D2D] border-0; }
 
-  /* Decorative chip with a leading dot — used for status/source indicators */
+  /* Decorative chip with a leading dot ΓÇö used for status/source indicators */
   .db-chip {
     @apply inline-flex items-center gap-1.5 text-[11px] font-medium px-2 py-[3px] rounded-[5px];
   }
@@ -86,7 +86,7 @@ body {
 
 /* SSE streaming text cursor */
 .streaming-cursor::after {
-  content: '▍';
+  content: 'Γûì';
   margin-left: 2px;
   animation: blink 1s steps(1, end) infinite;
   color: var(--db-accent);
@@ -95,7 +95,7 @@ body {
   50% { opacity: 0; }
 }
 
-/* Subtle staggered page enter — gentle, not flashy */
+/* Subtle staggered page enter ΓÇö gentle, not flashy */
 @keyframes db-rise {
   from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: none; }
@@ -105,7 +105,7 @@ body {
 .db-rise-2 { animation-delay:  60ms; }
 .db-rise-3 { animation-delay: 100ms; }
 
-/* Scrollbar styling — only on the WebKit/Blink path; Firefox uses scrollbar-color */
+/* Scrollbar styling ΓÇö only on the WebKit/Blink path; Firefox uses scrollbar-color */
 ::-webkit-scrollbar         { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track   { background: transparent; }
 ::-webkit-scrollbar-thumb   { background: rgba(127,119,221,0.18); border-radius: 999px;
