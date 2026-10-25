@@ -25,4 +25,4 @@ jobs:
               with:
                 context: ./${{matrix.folder}}
                 push: true
-                tags: ${{vars.DOCKERHUB_USERNAME}}/docker-${{matrix.folder}}-img:latest
+                tags: ${{vars.DOCKERHUB_USERNAME}}/docker-${{matrix.folder}}-img:v1
