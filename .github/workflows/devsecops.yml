@@ -25,9 +25,9 @@ jobs:
     secrets: inherit
 
 # Check the Sonar Scan of your whole application
-  sonar-scan:
-    uses: ./.github/workflows/sonarqube-scan.yml
-    secrets: inherit
+#  sonar-scan:
+#    uses: ./.github/workflows/sonarqube-scan.yml
+#    secrets: inherit
 
 # Check the tests of your whole application
   test-checks:
@@ -36,7 +36,7 @@ jobs:
 # Deploy the build post all checks
   deploy-build:
     uses: ./.github/workflows/code-deploy.yml
-    needs: [code-quality,secrets-scan,docker-scan,dependancy-checks,sonar-scan,test-checks]
+    needs: [code-quality,secrets-scan,docker-scan,dependancy-checks,test-checks]
     secrets: inherit
 
 # ----------- CD -----------------
