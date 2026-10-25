@@ -27,13 +27,13 @@ jobs:
                 password: ${{secrets.DOCKERHUB_TOKEN}}
             -
              name: Docker build ${{ matrix.folder}}
-             run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/docker-scan-${{ matrix.folder }}:latest .
+             run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/docker-scan-${{ matrix.folder }}:v1 .
              working-directory: ${{ matrix.folder}}
  
             - name: Run Trivy vulnerability scanner
               uses: aquasecurity/trivy-action@v0.36.0
               with:
-                image-ref: '${{vars.DOCKERHUB_USERNAME}}/docker-scan-${{matrix.folder}}:latest'
+                image-ref: '${{vars.DOCKERHUB_USERNAME}}/docker-scan-${{matrix.folder}}:v1'
                 format: 'table'
                 exit-code: '1'
                 ignore-unfixed: true
